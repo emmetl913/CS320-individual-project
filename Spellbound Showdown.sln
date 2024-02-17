@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spellbound Showdown", "Spellbound_Showdown\Spellbound Showdown.csproj", "{C406A075-3F58-461E-9EE4-FE426756DB08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C406A075-3F58-461E-9EE4-FE426756DB08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C406A075-3F58-461E-9EE4-FE426756DB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C406A075-3F58-461E-9EE4-FE426756DB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C406A075-3F58-461E-9EE4-FE426756DB08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C10871D-3F11-4627-91D6-F4D69C321FB4}
+	EndGlobalSection
+EndGlobal
