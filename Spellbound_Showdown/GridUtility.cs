@@ -1,4 +1,5 @@
-﻿using Spellbound_Showdown.Model;
+﻿using SharpDX.Direct3D9;
+using Spellbound_Showdown.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +25,20 @@ namespace Spellbound_Showdown
             this.gridY = gridY;
         }
 
-        public bool IsValidGridPosition(int gridColumn, int gridRow)
+        public bool IsValidGridPosition(int gridColumn, int gridRow, Level map)
         {
-            return true;
+            if (map.Tiles[gridColumn, gridRow].IsWalkable == true)
+            {
+                return true;
+            } else 
+            {
+                return false;
+            }
         }
         public (int gridColumn, int gridRow) ScreenToGrid(int screenX, int screenY)
         {
-            int gridColumn = (screenX) / gridX;
-            int gridRow = (screenY) / gridY;
+            int gridColumn = (screenX );
+            int gridRow = (screenY);
             return (gridColumn, gridRow);
         }
     }

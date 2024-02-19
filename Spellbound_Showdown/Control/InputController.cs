@@ -10,7 +10,10 @@ namespace Spellbound_Showdown.Control
 {
     internal class InputController
     {
-        public int gridColumn, gridRow;
+        private static int _gridColumn;
+        private static int _gridRow;
+        public static int GridColumn => _gridColumn;
+        public static int GridRow => _gridRow;
         public static void Update()
         {
             GridUtility gridUtility = new GridUtility(64, 64, 20, 20);
@@ -18,18 +21,10 @@ namespace Spellbound_Showdown.Control
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 Point mousePosition = new Point(mouseState.X, mouseState.Y);
-                (gridColumn, gridRow) = gridUtility.ScreenToGrid(mousePosition.X, mousePosition.Y);
+                (_gridColumn, _gridRow) = gridUtility.ScreenToGrid(mousePosition.X, mousePosition.Y);
 
             }
 
-        }
-
-        public static Vector2 getPointLoc() 
-        {
-            Vector2 pointloc;
-            
-
-            return pointloc;
         }
 
     }   

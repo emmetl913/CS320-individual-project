@@ -15,6 +15,7 @@ namespace Spellbound_Showdown.Model
         private readonly Point _mapTileSize = new(20, 20);
 
         private readonly Sprite[,] _tiles;
+        public Sprite[,] Tiles => _tiles;
 
         public Point TileSize { get; private set; }
         public Point MapSize { get; private set; }
@@ -42,8 +43,8 @@ namespace Spellbound_Showdown.Model
                 for (int x = 0; x < _mapTileSize.X; x++)
                 {
                     int r = random.Next(0, textures.Count);
-                    if (r != 3) _tiles[x, y] = new(textures[r], new(x * TileSize.X, y * TileSize.Y), true);
-                    if (r == 3) _tiles[x, y] = new(textures[r], new(x * TileSize.X, y * TileSize.Y), false);
+                    if (r != 2) _tiles[x, y] = new(textures[r], new(x * TileSize.X, y * TileSize.Y), true);
+                    if (r == 2) _tiles[x, y] = new(textures[r], new(x * TileSize.X, y * TileSize.Y), false);
                 }
             }
 

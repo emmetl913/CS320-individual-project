@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct3D9;
 using Spellbound_Showdown.Control;
 
 namespace Spellbound_Showdown
@@ -20,21 +21,22 @@ namespace Spellbound_Showdown
 
         protected override void Initialize()
         {
+            base.Initialize();
             Globals.WindowSize = new(1920, 1280);
+            Globals.font = Content.Load<SpriteFont>("X,Y");
             _graphics.PreferredBackBufferWidth = Globals.WindowSize.X;
             _graphics.PreferredBackBufferHeight = Globals.WindowSize.Y;
             _graphics.ApplyChanges();
             // TODO: Add your initialization logic here
             Globals.Content = Content;
             _gameManager = new();
-            base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.SpriteBatch = _spriteBatch;
-
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -55,6 +57,7 @@ namespace Spellbound_Showdown
 
             // TODO: Add your drawing code here
             _gameManager.Draw();
+            
 
             base.Draw(gameTime);
         }

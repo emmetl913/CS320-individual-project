@@ -16,9 +16,9 @@ namespace Spellbound_Showdown.Model
 
         public Sprite(Texture2D texture, Vector2 position, bool isWalkable)
         {
-            _texture = texture;
-            Position = position;
-            IsWalkable = isWalkable;
+            this._texture = texture;
+            this.Position = position;
+            this.IsWalkable = isWalkable;
         }
 
         public void Draw()

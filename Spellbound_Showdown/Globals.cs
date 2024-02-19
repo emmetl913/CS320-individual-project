@@ -11,6 +11,7 @@ namespace Spellbound_Showdown
 {
     internal class Globals
     {
+        public static SpriteFont font { get; set; }
         public static float Time { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
         public static ContentManager Content { get; set; }
