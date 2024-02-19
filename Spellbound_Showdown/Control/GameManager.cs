@@ -29,6 +29,7 @@ namespace Spellbound_Showdown.Control
         public void Update()
         {
             InputController.Update();
+            TextController.Update(_textbox.GetText());
             _textbox.Update();
             Vector2 temp = new Vector2((InputController.GridColumn/64)*64, (InputController.GridRow/64)*64);
             int row = InputController.GridRow / 64;
@@ -48,6 +49,7 @@ namespace Spellbound_Showdown.Control
             _map.Draw();
             _player.Draw();
             _textbox.Draw();
+            TextController.Draw();
             Globals.SpriteBatch.DrawString(Globals.font, ((InputController.GridColumn/64)+1) + "," + ((InputController.GridRow/64)+1),
                 new Vector2((Globals.WindowSize.X-100), 20), Color.White);
             Globals.SpriteBatch.End();

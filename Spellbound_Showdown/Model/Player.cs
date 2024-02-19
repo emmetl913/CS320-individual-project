@@ -11,6 +11,7 @@ namespace Spellbound_Showdown.Model
     {
         // Setup
         public const float speed = 5;
+        public const float atk = 3;
         private Vector2 _minPos, _maxPos;
         public Vector2 playerPos;
         public bool walk;

@@ -10,6 +10,7 @@ namespace Spellbound_Showdown.Model
     {
         private Texture2D _texture;
         private Rectangle _rect;
+        //private Rectangle Rect => _rect;
         private string _text = "";
         private string _etext = "";
         private Keys[] _lastKeys;
@@ -52,6 +53,7 @@ namespace Spellbound_Showdown.Model
                 }
             }
 
+
             _lastKeys = pressedKeys;
         }
 
@@ -65,7 +67,7 @@ namespace Spellbound_Showdown.Model
 
         public string GetText()
         { 
-            return _text;
+            return _etext;
         }
     }
 }
