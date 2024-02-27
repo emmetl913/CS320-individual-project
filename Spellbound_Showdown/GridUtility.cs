@@ -19,6 +19,7 @@ namespace Spellbound_Showdown
 
         public GridUtility(int tileX, int tileY, int gridX, int gridY)
         {
+            // Constructor
             this.tileX = tileX;
             this.tileY = tileY;
             this.gridX = gridX;
@@ -27,6 +28,7 @@ namespace Spellbound_Showdown
 
         public bool IsValidGridPosition(int gridColumn, int gridRow, Level map)
         {
+            // Check if a given location can be moved on or not
             if (map.Tiles[gridColumn, gridRow].IsWalkable == true)
             {
                 return true;
@@ -37,8 +39,9 @@ namespace Spellbound_Showdown
         }
         public (int gridColumn, int gridRow) ScreenToGrid(int screenX, int screenY)
         {
-            int gridColumn = (screenX );
-            int gridRow = (screenY);
+            // Convert screen coords to grid coords
+            int gridColumn = screenX;
+            int gridRow = screenY;
             return (gridColumn, gridRow);
         }
     }

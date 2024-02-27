@@ -14,6 +14,7 @@ namespace Spellbound_Showdown
 
         public Game1()
         {
+            // Setup Content Directory, graphics manager, and mouse visibility
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -21,31 +22,34 @@ namespace Spellbound_Showdown
 
         protected override void Initialize()
         {
+            // Init
             base.Initialize();
             Globals.WindowSize = new(1920, 1280);
-            Globals.font = Content.Load<SpriteFont>("X,Y");
+            Globals.font = Content.Load<SpriteFont>("BaseFont");
             _graphics.PreferredBackBufferWidth = Globals.WindowSize.X;
             _graphics.PreferredBackBufferHeight = Globals.WindowSize.Y;
             _graphics.ApplyChanges();
-            // TODO: Add your initialization logic here
+            
             Globals.Content = Content;
             _gameManager = new();
         }
 
         protected override void LoadContent()
         {
+            // Load sprite batch into global variable
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.SpriteBatch = _spriteBatch;
             
-            // TODO: use this.Content to load your game content here
+            
         }
 
         protected override void Update(GameTime gameTime)
         {
+            // Exit if escape key is pressed
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            // Update gameTime and gameManager
             Globals.Update(gameTime);
             _gameManager.Update();
             base.Update(gameTime);
@@ -53,9 +57,8 @@ namespace Spellbound_Showdown
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-
-            // TODO: Add your drawing code here
+            // Make backround black and call gameManager draw method
+            GraphicsDevice.Clear(Color.Black);            
             _gameManager.Draw();
             
 
