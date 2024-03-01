@@ -11,26 +11,36 @@ namespace Spellbound_Showdown.Control.Controllers
     internal class TextController
     {
         private static string _outText;
-        private static int incrTurn = 0;
+        public string OutText => _outText;
 
-        public static void Update(string _text)
+        public static void Update(string _text, TurnController turnController)
         {
             // Take the inputed text and check if it matches a possible move
+
             if (_text == "ATTACK")
             {
                 _outText = "You Attack!";
+                turnController.NextTurn();
             }
             else if (_text == "HEAL")
             {
                 _outText = "You Heal!";
-                
+                turnController.NextTurn();
             }
             else if (_text == "BLOCK")
             {
                 _outText = "You Block!";
-                
+                turnController.NextTurn();
             }
+            else if (_text == "MENU")
+            {
+                _outText = "Returning to Menu";
+            }
+               
+            
         }
+
+       
 
         // Draw method for text
         public static void Draw()

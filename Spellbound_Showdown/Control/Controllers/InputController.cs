@@ -14,19 +14,20 @@ namespace Spellbound_Showdown.Control.Controllers
         private static int _gridRow;
         public static int GridColumn => _gridColumn;
         public static int GridRow => _gridRow;
-        public static void Update()
+        public static void Update(TurnController turnController)
         {
             // Use grid utility to determine what tile the mouse is in
             GridUtility gridUtility = new GridUtility(64, 64, 20, 20);
             MouseState mouseState = Mouse.GetState();
             // When the mouse is pressed, change gridColumn and gridRow variables
-            if (mouseState.LeftButton == ButtonState.Pressed)
+            if (mouseState.LeftButton == ButtonState.Pressed && turnController.getTurn() == TurnState.Player)
             {
                 Point mousePosition = new Point(mouseState.X, mouseState.Y);
                 (_gridColumn, _gridRow) = gridUtility.ScreenToGrid(mousePosition.X, mousePosition.Y);
-                
+                turnController.NextTurn();
+
             }
-            
+
         }
 
     }

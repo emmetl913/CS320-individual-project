@@ -12,7 +12,9 @@ namespace Spellbound_Showdown
     internal class Globals
     {
         // Global variables
+        public static float volumeLevel { get; set; }
         public static SpriteFont font { get; set; }
+        public static SpriteFont titlefont { get; set; }
         public static float Time { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
         public static ContentManager Content { get; set; }

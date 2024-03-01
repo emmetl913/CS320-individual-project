@@ -76,5 +76,9 @@ namespace Spellbound_Showdown.Model
         { 
             return _etext;
         }
+        public void setText(String text)
+        {
+            _etext = text;
+        }
     }
 }

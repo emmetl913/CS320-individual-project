@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
 using Spellbound_Showdown.Control;
+using Spellbound_Showdown.Control.States;
 
 namespace Spellbound_Showdown
 {
@@ -11,7 +12,10 @@ namespace Spellbound_Showdown
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private GameManager _gameManager;
+        private State _currentState;
+        private State _nextState;
 
+        
         public Game1()
         {
             // Setup Content Directory, graphics manager, and mouse visibility
@@ -19,28 +23,32 @@ namespace Spellbound_Showdown
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
-
+        
         protected override void Initialize()
         {
             // Init
-            base.Initialize();
+            Globals.Content = Content;
             Globals.WindowSize = new(1920, 1280);
             Globals.font = Content.Load<SpriteFont>("BaseFont");
             _graphics.PreferredBackBufferWidth = Globals.WindowSize.X;
             _graphics.PreferredBackBufferHeight = Globals.WindowSize.Y;
             _graphics.ApplyChanges();
-            
-            Globals.Content = Content;
             _gameManager = new();
-        }
 
+            base.Initialize();
+            
+        }
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
         protected override void LoadContent()
         {
             // Load sprite batch into global variable
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.SpriteBatch = _spriteBatch;
-            
-            
+
+            _currentState = new Menu(this, _gameManager, _graphics.GraphicsDevice, Globals.Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,18 +57,26 @@ namespace Spellbound_Showdown
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // Update gameTime and gameManager
-            Globals.Update(gameTime);
-            _gameManager.Update();
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+
+                _nextState = null;
+            }
+
+            _currentState.Update();
+
+            _currentState.PostUpdate();
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             // Make backround black and call gameManager draw method
-            GraphicsDevice.Clear(Color.Black);            
-            _gameManager.Draw();
-            
+            GraphicsDevice.Clear(Color.Black);
+
+            _currentState.Draw(_gameManager, _spriteBatch);
 
             base.Draw(gameTime);
         }

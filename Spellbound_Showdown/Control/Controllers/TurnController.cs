@@ -32,5 +32,10 @@ namespace Spellbound_Showdown.Control.Controllers
                     break;
             }
         }
+
+        public TurnState getTurn()
+        {
+            return currentTurn;
+        }
     }
 }
